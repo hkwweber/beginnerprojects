@@ -53,23 +53,26 @@ function generateWordPairs(wordArr) {
 
 
 
-// write one line of mmmpoetry
+ //attempt at building from one chain for the whole line instead of choosing new random words
 function writeLine (obj, lineLength) {
-  // console.log(obj);
   var line = [];
   var originalTextArr = parsedText(text);
-  while (lineLength > line.length + 1) {
-    var randomWord = originalTextArr[Math.floor(Math.random()*(originalTextArr.length))];
-    // console.log(randomWord);
-    line.push(randomWord);
-    if (pickFromMarkovChain(randomWord)) {
-      line.push(pickFromMarkovChain(randomWord));
-    }
+  var randomWord = originalTextArr[Math.floor(Math.random()*(originalTextArr.length))];
+  console.log('random word: ',randomWord);
+  line.push(randomWord);
+  while (lineLength > line.length) {
+    //if (pickFromMarkovChain(randomWord)) {
+    var markovWord = pickFromMarkovChain(randomWord);
+      line.push(markovWord);
+      console.log(line);
+      randomWord = (markovWord);
+    //}
+    console.log(randomWord);
   }
   var finishedLine = line.join(' ');
   // console.log('finished line: ',finishedLine);
   return finishedLine;
-}  
+}
  
  
 
