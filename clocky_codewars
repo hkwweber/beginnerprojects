@@ -1,0 +1,32 @@
+var whatTimeIsIt = function(angle) {
+  if (angle === 0) {
+    return '12:00';
+  }
+  var hour;
+  var minute; 
+  var timeInMinutes = angle*2;
+  // console.log(timeInMinutes);
+  var time;
+  if (timeInMinutes%60) {
+    hour = (timeInMinutes - (timeInMinutes%60))/60;
+    minute = Math.floor((timeInMinutes%60));
+  }
+  else {
+    hour = timeInMinutes/60;
+    minute = 0;
+  }
+  // console.log('hour: ',hour, 'minute: ', minute);
+  if (hour === 0) {
+    hour = 12;
+  }
+  else if (hour < 10) {
+    hour = '0' + hour;
+  }
+  if (minute < 10) {
+    minute = '0' + minute;
+  }
+  // console.log('hour: ',hour, 'minute: ', minute);
+  return (hour + ':' + minute);
+};
+
+whatTimeIsIt(107.5);
